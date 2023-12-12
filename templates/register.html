@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- ***** Breadcumb Area Start ***** -->
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url('{% static 'img/bg-img/hero-1.jpg' %}')">
+
+    </div>
+    <!-- ***** Breadcumb Area End ***** -->
+
+    <!-- ***** Contact Area Start ***** -->
+    <div class="dorne-contact-area d-md-flex" id="contact">
+        <!-- Contact Form Area -->
+        <div class="contact-form-area equal-height">
+            <div class="contact-text">
+                <h4>Hello, Get in touch with us</h4>
+                <div class="contact-info d-lg-flex">
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="contact-form-title">
+                    <h6>User Registration</h6>
+                </div>
+                <form action="" method="post"  class="appointment">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="username" class="form-control" placeholder="Your  Username">
+                        </div>
+                        <div class="col-12">
+                            <input type="phone" name="phone" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="col-12">
+                            <textarea name="address" class="form-control" id="Message" cols="30" rows="10" placeholder="Your Address"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="location" class="form-control" placeholder="Your Location">
+                        </div>
+                        <div class="col-12">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="col-12">
+                            <input type="password" name="password" class="form-control" placeholder="Your Password">
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn dorne-btn">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Map Area -->
+        <div class="dorne-map-area equal-height">
+            <div id="googleMap"></div>
+        </div>
+    </div>
+    <!-- ***** Contact Area End ***** -->
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url('{% static 'img/bg-img/hero-1.jpg' %}')">
+
+    </div>
+
+    <div class="dorne-contact-area d-md-flex" id="contact">
+        <!-- Contact Form Area -->
+        <div class="contact-form-area equal-height">
+            <div class="contact-text">
+                <h4>Hello, Get in touch with us</h4>
+                <div class="contact-info d-lg-flex">
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="contact-form-title">
+                    <h6>Login</h6>
+                </div>
+                <form action="" method="post"  class="appointment">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="username" class="form-control" placeholder="Your Username">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="Password" name="password" class="form-control" placeholder="Password">
+                        <div class="col-12">
+                            <button type="submit" class="btn dorne-btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Map Area -->
+        <div class="dorne-map-area equal-height">
+            <div id="googleMap"></div>
+        </div>
+    </div>
+{% endblock content %}

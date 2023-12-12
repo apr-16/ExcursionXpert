@@ -1,0 +1,67 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+	
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>  
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+      <div class="col-md-7 heading-section text-center ftco-animate">
+        <h2>Packages</h2>
+      </div>
+    </div>
+        <div class="row">
+            {% for i in pr %}
+        <div class="col-md-4 ftco-animate">
+                
+          <div class="block-7">
+              <div class="img" id="pic-1"><img width="350px" style"align:center;" src="{{ i.images1.url }}" /></div>
+            <div class="text-center p-4">
+                <span class="excerpt d-block">{{ i.packages_name }}</span>
+                <ul class="pricing-text mb-5">
+                    <li><span class="fa fa-check mr-2"></span>District - {{ i.dis.dis }}</li>
+                </ul>
+                <ul class="pricing-text mb-5">
+                  <li><span class="fa fa-check mr-2"></span>Destination - {{ i.destination }}</li>
+                </ul>
+                <ul class="pricing-text mb-5">
+                    <li><span class="fa fa-check mr-2"></span>Date - {{ i.date }}</li>
+                </ul>
+                <ul class="pricing-text mb-5">
+                    <li><span class="fa fa-check mr-2"></span>Cost - {{ i.cost }}</li>
+                </ul>
+                <ul class="pricing-text mb-5">
+                    <li><span class="fa fa-check mr-2"></span>Inclusions - {{ i.inclusions }}</li>
+                </ul>
+                <ul class="pricing-text mb-5">
+                  <li><span class="fa fa-check mr-2"></span>Attractions - {{ i.attraction }}</li>
+                </ul>
+                <ul class="pricing-text mb-5">
+                    <li><span class="fa fa-check mr-2"></span>More Informations - {{ i.more_info }}</li>
+                </ul>
+                <ul class="pricing-text mb-5">
+                    <li><span class="fa fa-check mr-2"></span>Current Climate - {{ i.climate }}</li>
+                </ul>
+                <a href="update?id={{ i.id }}" class="btn btn-primary d-block px-2 py-3">Edit/Update</a><br>
+                <a href="delete?id={{ i.id }}" class="btn btn-danger d-block px-2 py-3">Delete</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+
+
+{% endblock %}

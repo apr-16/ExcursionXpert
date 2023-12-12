@@ -1,0 +1,83 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url('{% static 'img/bg-img/hero-1.jpg' %}')">
+
+    </div>
+
+    <div class="dorne-contact-area d-md-flex" id="contact">
+        <!-- Contact Form Area -->
+        <div class="contact-form-area equal-height">
+            <div class="contact-text">
+                <h4>Hello, Get in touch with us</h4>
+                <div class="contact-info d-lg-flex">
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="contact-form-title">
+                    <h6>Add Districts</h6>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data"  class="appointment" >
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            {% comment %} <label for="district">District:</label> {% endcomment %}
+                            <select name="district" placeholder="Select District" required>
+                                {% for d in pr %}
+                                    <option value="{{ d.id }}">{{ d.dis }}</option>
+                                {% endfor %}<
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="packname" class="form-control" placeholder="Add Packages">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="destination" class="form-control" placeholder="From">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="date" name="date" class="form-control" placeholder="Add Date">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="cost" class="form-control" placeholder="Add Cost">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <textarea name="inclu" class="form-control" placeholder="Add Inclusion"></textarea>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="attra" class="form-control" placeholder="Add Attraction">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="more" class="form-control" placeholder="Add More">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <textarea name="cli" class="form-control" placeholder="Add Current Climate"></textarea>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="img">Image 1:</label>
+                            <br>
+                            <input type="file" name="img" accept="image/*" required><br>
+                        </div>                        
+                        <div class="col-12 col-md-6">
+                            <label for="img2">Image 2:</label>
+                            <input type="file" name="img2" accept="image/*" required><br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="img3">Image 3:</label>
+                            <input type="file" name="img3" accept="image/*" required><br>
+                        </div>
+                            <br>
+                            <button type="submit" class="btn dorne-btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Map Area -->
+        <div class="dorne-map-area equal-height">
+            <div id="googleMap"></div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="h-100 h-custom">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+            <h3><b>Guide Details</b></h3>
+            <form method="get" action="guide">
+                <input type="text" name="district" placeholder="Search by District" />
+                <button type="submit">Search</button>
+            </form>              
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="h5"><b>Guide Name</b></th>
+                  <th scope="col">Contact No</th>
+                  <th scope="col">Disktrict</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in pr %}
+                <tr>
+                  <td class="align-middle">
+                    <p class="mb-0" style="font-weight: 500;">{{i.guide}}</p>
+                  </td>
+                  <td class="align-middle">
+                    <div class="d-flex flex-row">
+                      <p class="mb-0" style="font-weight: 500;">{{i.contact}}</p>
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <div class="d-flex flex-row">
+                      <p class="mb-0" style="font-weight: 500;">{{i.dis.dis}}</p>
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

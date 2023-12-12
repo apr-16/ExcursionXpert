@@ -1,0 +1,90 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content %}
+	
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section class="h-100 h-custom">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+            <h3><b>My Bookings</b></h3>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="h5"><b>Image</b></th>
+                  <th scope="col">Package Name</th>
+                  <th scope="col">Persons</th>
+                  <th scope="col">Total Charge</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Payment</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                {% for i in ctc %}
+                <tr>
+                  <th scope="row">
+                    <div class="d-flex align-items-center">
+                      <img style="max-width: 200px; max-height: 140px;" src="{{ i.pack.images2.url }}">
+                    </div>
+                  </th>
+                  <td class="align-middle">
+                    <p class="mb-0" style="font-weight: 500;">{{i.pack.packages_name}}</p>
+                  </td>
+                  <td class="align-middle">
+                    <div class="d-flex flex-row">
+                      <p class="mb-0" style="font-weight: 500;">{{i.persons}}</p>
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <p class="mb-0" style="font-weight: 500;">
+                      <input type="number" name="total" value="{{i.total}}" required="" class="form-control" readonly placeholder=""><br>
+                  </td>
+
+                  <td class="align-middle">
+                    <div class="d-flex flex-row">
+                      <p class="mb-0" style="font-weight: 500;">{{i.status}}</p>
+                    </div>
+                  </td>
+
+                  <td class="align-middle">
+                    <div class="d-flex flex-row">
+                      {% if i.status == 'approved' %}
+                        <a href="payment?id={{i.pack.id}}">
+                          <button type="button" class="btn btn-primary btn-block btn-lg">
+                            <span>Make Payment</span>
+                          </button>
+                        </a>
+                      {% elif i.status == 'paid' %}
+                        paid
+                      {% else %}
+                      paynow
+                      {% endif %}
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+              
+              </tbody>
+
+            </table>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

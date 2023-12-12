@@ -1,0 +1,79 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url('{% static 'img/bg-img/hero-1.jpg' %}')">
+
+    </div>
+
+    <div class="dorne-contact-area d-md-flex" id="contact">
+        <!-- Contact Form Area -->
+        <div class="contact-form-area equal-height">
+            <div class="contact-text">
+                <h4>Hello, Get in touch with us</h4>
+                <div class="contact-info d-lg-flex">
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="contact-form-title">
+                    <h6>Edit Packages</h6>
+                </div>
+                {% for i in pr %}   
+                <form action="" method="post" enctype="multipart/form-data"  class="appointment" >
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="packname" value="{{ i.packages_name }}" class="form-control" placeholder="Add Packages">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="destination" value="{{ i.destination }}" class="form-control" placeholder="From">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="date" name="date" value="{{ i.date }}" class="form-control" placeholder="Add Date">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="cost" value="{{ i.cost }}" class="form-control" placeholder="Add Cost">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <textarea name="inclu" value="{{ i.inclusions }}" class="form-control" placeholder="Add Inclusion"></textarea>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="attra" value="{{ i.attraction }}" class="form-control" placeholder="Add Attraction">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="text" name="more" value="{{ i.more_info }}" class="form-control" placeholder="Add More">
+                        </div>
+                        <input type="hidden" name="id" class="form-control" value="{{i.id}}" readonly>
+                        <div class="col-12 col-md-6">
+                            <textarea name="cli" value="{{ i.climate }}" class="form-control" placeholder="Add Current Climate"></textarea>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="img">Image 1:</label>
+                            <br>
+                            <input type="file" name="img" accept="image/*" required>
+                        </div>                        
+                        <div class="col-12 col-md-6">
+                            <label for="img2">Image 2:</label>
+                            <input type="file" name="img2" accept="image/*" required><br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="img3">Image 3:</label>
+                            <input type="file" name="img3" accept="image/*" required><br>
+                        </div>
+                        {% endfor %}
+                        <div>
+                            <br>
+                            <input type="submit" value="UPDATE" class="btn btn-primary py-3 px-4">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Map Area -->
+        <div class="dorne-map-area equal-height">
+            <div id="googleMap"></div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,88 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+	
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section class="h-100 h-custom">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+            <h3><b>Bookings</b></h3>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="h5"><b>Image</b></th>
+                  <th scope="col" class="h5"><b>User Name</b></th>
+                  <th scope="col" class="h5"><b>User Phone number</b></th>
+                  <th scope="col">Package Name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">View Payment History</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                {% for i in pr %}
+                <tr>
+                  <th scope="row">
+                    <div class="d-flex align-items-center">
+                      <img style="max-width: 200px; max-height: 140px;" src="{{ i.pack.images2.url }}">
+                    </div>
+                  </th>
+                  <td class="align-middle">
+                    <p class="mb-0" style="font-weight: 500;">{{i.user.user.first_name}}</p>
+                  </td>
+                  <td class="align-middle">
+                    <p class="mb-0" style="font-weight: 500;">{{i.user.phone}}</p>
+                  </td>
+                  <td class="align-middle">
+                    <p class="mb-0" style="font-weight: 500;">{{i.pack.packages_name}}</p>
+                  </td>
+
+                  <td class="align-middle">
+                    <div class="d-flex flex-row">
+                      <p class="mb-0" style="font-weight: 500;">{{i.status}}</p>
+                    </div>
+                  </td>
+
+                  <td class="align-middle">
+                    <div class="d-flex flex-row">
+                      {% if i.status == 'approved' %}
+                      approved
+                      {% elif i.status == 'paid' %}
+                      <a href="history?id={{ i.id }}" class="btn btn-primary d-block px-2 py-3">View Details</a><br>
+                      {% else %}
+                      paynow
+                      {% endif %}
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+              
+              </tbody>
+
+            </table>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+<br>
+<br>
+<br>
+<br>
+
